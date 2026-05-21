@@ -1,15 +1,18 @@
-from flask import Flask, render_template # render template é usado para buscar o arquivo html e mostrar para o usuário
+from flask import Flask, render_template
 
 
 app = Flask(__name__)
 
 @app.route('/')
-def home():
-    return render_template('home.html') # chamei o que eu importei (agora falamos que isso é renderizar o arquivo)
+def questao1():
+    return render_template('questao1.html', name = "Janaína")
 
-@app.route('migs.html') # aqui é um conteúdo dinâmico, ou seja, o nome pode ser qualquer coisa, e ele vai mostrar a mensagem personalizada
-def sobre(nome):
-    return  f'Olá, {nome}! Bem-vindo à página.'
+
+@app.route('/questao2')
+def questao2():
+    dados = [{"nome": "Janaína", "idade": 20}]
+    return render_template('questao2.html', alunos=dados)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
