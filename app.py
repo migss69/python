@@ -1,18 +1,15 @@
-from flask import Flask, render_template
-
+from flask import Flask, render_template, request
+from calculadora import calcular
 
 app = Flask(__name__)
 
-@app.route('/')
-def questao1():
-    return render_template('questao1.html', name = "Janaína")
+
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        return calcular()
+    return render_template("calculadora.html", etapas=None, resultados=None)
 
 
-@app.route('/questao2')
-def questao2():
-    dados = [{"nome": "Janaína", "idade": 20}]
-    return render_template('questao2.html', alunos=dados)
-
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     app.run(debug=True)
