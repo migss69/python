@@ -1,223 +1,226 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+/* Configurações de Cores e Estilo do Soldier Boy (Vought 1984) */
+:root {
+    --militar-green: #2b3a2a;
+    --soldier-gold: #d4af37;
+    --dark-bg: #1a1e19;
+    --text-light: #f5f5f5;
+    --danger-red: #8b0000;
 }
 
 body {
-    background: radial-gradient(circle at center, #111827 0%, #030712 100%);
-    color: #f8fafc;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
-    overflow-x: hidden;
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    font-family: 'Courier New', Courier, monospace;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    border: 3px double var(--soldier-gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
 }
 
+/* Novo estilo para a imagem do Soldier Boy */
+.container-imagem {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.banner-soldier {
+    max-width: 180px;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid var(--soldier-gold);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
 
 h1 {
-    font-size: 2.6rem;
-    font-weight: 900;
-    margin-bottom: 30px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    color: var(--soldier-gold);
     text-align: center;
-    background: linear-gradient(135deg, #ffe066 0%, #d4af37 50%, #aa7c11 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
-}
-
-
-.layout-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 50px;
-    max-width: 950px;
-    width: 100%;
-}
-
-#calculator {
-    flex: 1;
-    max-width: 440px;
-    width: 100%;
-    background: linear-gradient(145deg, #132247, #0b132b);
-    border: 3px solid #d4af37;
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 
-                0 0 20px rgba(212, 175, 55, 0.2);
-}
-
-
-.form-grupo {
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-
-.form-grupo label {
-    font-size: 0.85rem;
-    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    color: #fef08a; 
-}
-
-
-.form-grupo input,
-.form-grupo select {
-    width: 100%;
-    padding: 12px 16px;
-    background: rgba(3, 7, 18, 0.8);
-    border: 2px solid #1e293b;
-    border-radius: 10px;
-    color: #ffffff;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.2s ease;
-}
-
-
-.form-grupo input:focus,
-.form-grupo select:focus {
-    border-color: #ef4444;
-    box-shadow: 0 0 12px rgba(239, 68, 68, 0.6);
-}
-
-.form-grupo select option {
-    background: #0b132b;
-    color: #ffffff;
-}
-
-
-button[type="submit"] {
-    width: 100%;
-    padding: 15px;
-    background: linear-gradient(135deg, #dc2626, #7f1d1d);
-    border: 2px solid #ef4444;
-    border-radius: 10px;
-    color: #ffffff;
-    font-size: 1.15rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+    letter-spacing: 2px;
+    border-bottom: 2px solid var(--militar-green);
+    padding-bottom: 10px;
     margin-top: 10px;
 }
 
-button[type="submit"]:hover {
-    transform: scale(1.02);
-    background: linear-gradient(135deg, #ef4444, #991b1b);
-    box-shadow: 0 0 25px rgba(239, 68, 68, 0.8);
-}
-
-button[type="submit"]:active {
-    transform: scale(0.98);
-}
-
-
-.resultado {
-    margin-top: 25px;
-    padding: 20px;
-    background: rgba(212, 175, 55, 0.1);
-    border: 2px solid #d4af37;
-    border-radius: 12px;
-}
-
-.resultado strong {
-    font-size: 0.8rem;
-    color: #fde047;
+.subtitulo {
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 30px;
     text-transform: uppercase;
+}
+
+/* Formulários e Inputs */
+.form-grupo {
+    margin-bottom: 20px;
+}
+
+label {
     display: block;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    color: var(--soldier-gold);
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
-.etapas {
-    font-size: 0.95rem;
-    color: #e2e8f0;
-    line-height: 1.5;
+input {
+    width: 100%;
+    padding: 10px;
+    background-color: #252a24;
+    border: 1px solid var(--militar-green);
+    color: white;
+    box-sizing: border-box;
+    font-family: inherit;
 }
 
-.valor-final {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 1.2rem;
+input:focus {
+    outline: none;
+    border-color: var(--soldier-gold);
+    box-shadow: 0 0 5px var(--soldier-gold);
+}
+
+.erro {
+    background-color: #721c24;
+    color: #f8d7da;
+    padding: 10px;
+    border: 1px solid #f5c6cb;
+    text-align: center;
     font-weight: bold;
 }
 
-.valor-final span {
-    color: #fde047;
-    font-size: 1.5rem;
-    text-shadow: 0 0 10px rgba(253, 224, 71, 0.4);
+/* Botões e Links */
+button[type="submit"] {
+    width: 100%;
+    background-color: var(--militar-green);
+    color: var(--soldier-gold);
+    border: 2px solid var(--soldier-gold);
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* Estado de Erro */
-.resultado.erro {
-    background: rgba(220, 38, 38, 0.15);
-    border-color: #ef4444;
+button[type="submit"]:hover {
+    background-color: var(--soldier-gold);
+    color: var(--dark-bg);
 }
 
-.resultado.erro strong {
-    color: #f87171;
+.btn {
+    background-color: var(--militar-green);
+    color: var(--soldier-gold);
+    border: 2px solid var(--soldier-gold);
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: inline-block;
+    transition: 0.3s;
 }
 
+.btn:hover {
+    background-color: var(--soldier-gold);
+    color: var(--dark-bg);
+}
 
-#calculator a {
+.back-link {
     display: block;
     text-align: center;
-    margin-top: 25px;
-    color: #94a3b8;
+    margin-top: 20px;
+    color: #aaa;
     text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: 600;
+}
+
+.back-link:hover {
+    color: var(--soldier-gold);
+}
+
+/* Tabelas de Dados */
+.total-recrutas {
+    margin-top: 20px;
+    color: var(--soldier-gold);
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    border: 1px solid var(--militar-green);
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--militar-green);
+}
+
+th {
+    background-color: var(--militar-green);
+    color: var(--soldier-gold);
     text-transform: uppercase;
-    transition: color 0.2s ease;
 }
 
-#calculator a:hover {
-    color: #fde047;
+tr:hover {
+    background-color: #222821;
 }
 
+.destaque-nome {
+    color: var(--soldier-gold);
+    font-weight: bold;
+}
 
-.coluna-imagem {
-    flex: 1;
+/* Ações da Tabela */
+.acoes {
     display: flex;
-    justify-content: center;
+    gap: 10px;
     align-items: center;
 }
 
-.coluna-imagem img {
-    max-height: 520px;
-    width: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.8));
-    animation: flutuar 4s ease-in-out infinite; 
+.acoes a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-weight: bold;
 }
 
-/* Efeito de flutuação */
-@keyframes flutuar {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+.acoes a:hover {
+    text-decoration: underline;
 }
 
+.btn-danger {
+    background-color: transparent;
+    color: var(--danger-red);
+    border: 1px solid var(--danger-red);
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    text-transform: uppercase;
+    transition: 0.2s;
+}
 
-@media (max-width: 768px) {
-    .layout-container {
-        flex-direction: column;
-        gap: 35px;
-    }
-    .coluna-imagem img {
-        max-height: 380px;
-    }
+.btn-danger:hover {
+    background-color: var(--danger-red);
+    color: white;
+}
+
+.vazio {
+    text-align: center;
+    padding: 30px;
+    color: #666;
+    border: 1px dashed var(--militar-green);
+}
+
+.banner-soldier {
+    max-width: 320px; /* Aumentado de 180px para 320px */
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 3px solid var(--soldier-gold); /* Borda um pouco mais grossa */
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); /* Brilho dourado intensificado */
+    transition: transform 0.3s ease;
+}
+
+.banner-soldier:hover {
+    transform: scale(1.03); /* Leve efeito de zoom ao passar o mouse */
 }

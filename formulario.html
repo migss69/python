@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Vought OS — {{ titulo }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container-imagem">
+        <img class="banner-soldier" src="https://cdn.observatoriodocinema.com.br/2026/04/solider-boy-10-4.jpg" alt="Soldier Boy">
+    </div>
+
+    <h1>SOLDIER BOY — {{ titulo }}</h1>
+
+    {% if erro %}
+    <p class="erro">[ALERTA] {{ erro }}</p>
+    {% endif %}
+
+    <form method="POST"
+          action="{% if aluno_id %}{{ url_for('editar', aluno_id=aluno_id) }}{% else %}{{ url_for('cadastrar') }}{% endif %}">
+        <div class="form-grupo">
+            <label for="nome">Nome do Recruta</label>
+            <input type="text" id="nome" name="nome" required value="{{ nome or '' }}" placeholder="Ex: Ben / Soldier Boy">
+        </div>
+        <div class="form-grupo">
+            <label for="email">E-mail de Contato</label>
+            <input type="email" id="email" name="email" required value="{{ email or '' }}" placeholder="codenome@vought.com">
+        </div>
+        <div class="form-grupo">
+            <label for="tel">Frequência de Rádio (Telefone)</label>
+            <input type="tel" id="tel" name="tel" required value="{{ tel or '' }}" placeholder="(XX) XXXXX-XXXX">
+        </div>
+        <button type="submit">Salvar Registro no Arquivo</button>
+    </form>
+
+    <p><a class="back-link" href="{{ url_for('index') }}">← Voltar ao Quartel General</a></p>
+
+</body>
+</html>

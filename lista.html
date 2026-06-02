@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Vought OS — Arquivo Antigo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container-imagem">
+        <img class="banner-soldier" src="https://www.einerd.com/wp-content/uploads/2025/08/jensen-ackles-como-soldier-boy-boys-temporada-3-3061990.jpg" alt="Soldier Boy">
+    </div>
+
+    <h1>PROJETO SOLDIER BOY</h1>
+    <p class="subtitulo">Banco de Dados de Recrutas — Vought International (1984)</p>
+
+    <p>
+        <a class="btn" href="{{ url_for('cadastrar') }}">[+] Alistar Novo Recruta</a>
+    </p>
+
+    {% if alunos %}
+    <p class="total-recrutas">RECRUTAS ATIVOS NO SISTEMA: {{ alunos | length }}</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome do Aliado</th>
+                <th>E-mail</th>
+                <th>Frequência (Tel)</th>
+                <th>Ações de Campo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+            <tr>
+                <td>#{{ aluno.id }}</td>
+                <td class="destaque-nome">{{ aluno.nome }}</td>
+                <td>{{ aluno.email }}</td>
+                <td>{{ aluno.tel | int if aluno.tel is float else aluno.tel }}</td>
+                <td class="acoes">
+                    <a href="{{ url_for('editar', aluno_id=aluno.id) }}">Modificar</a>
+                    <form method="POST" action="{{ url_for('excluir', aluno_id=aluno.id) }}"
+                          onsubmit="return confirm('Eliminar registro de {{ aluno.nome }} permanentemente?');">
+                        <button type="submit" class="btn-danger">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p class="vazio">Nenhum recruta sob o comando do Soldier Boy foi registrado ainda.</p>
+    {% endif %}
+
+</body>
+</html>
