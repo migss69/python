@@ -1,226 +1,238 @@
-/* Configurações de Cores e Estilo do Soldier Boy (Vought 1984) */
-:root {
-    --militar-green: #2b3a2a;
-    --soldier-gold: #d4af37;
-    --dark-bg: #1a1e19;
-    --text-light: #f5f5f5;
-    --danger-red: #8b0000;
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: var(--dark-bg);
-    color: var(--text-light);
-    font-family: 'Courier New', Courier, monospace;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
-    border: 3px double var(--soldier-gold);
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+    font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+    background: #0a0a0a;
+    color: #e5e5e5;
+    min-height: 100vh;
 }
 
-/* Novo estilo para a imagem do Soldier Boy */
-.container-imagem {
-    text-align: center;
-    margin-bottom: 15px;
+/* NAV */
+.nav {
+    background: #0f0f0f;
+    border-bottom: 2px solid #FFD700;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    gap: 28px;
 }
 
-.banner-soldier {
-    max-width: 180px;
-    height: auto;
-    border-radius: 8px;
-    border: 2px solid var(--soldier-gold);
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+.nav::before {
+    content: 'NJR';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    color: #FFD700;
+    letter-spacing: 2px;
+    margin-right: auto;
+}
+
+.nav a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.nav a:hover {
+    color: #FFD700;
+}
+
+/* CONTAINER */
+.container {
+    max-width: 960px;
+    margin: 32px auto;
+    padding: 0 20px;
 }
 
 h1 {
-    color: var(--soldier-gold);
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 2px solid var(--militar-green);
-    padding-bottom: 10px;
-    margin-top: 10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 3px;
+    color: #fff;
+    margin-bottom: 4px;
 }
 
 .subtitulo {
-    text-align: center;
-    color: #888;
-    font-size: 14px;
-    margin-bottom: 30px;
-    text-transform: uppercase;
+    color: #555;
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
 }
 
-/* Formulários e Inputs */
+/* CARDS DO DASHBOARD */
+.cards {
+    display: flex;
+    gap: 16px;
+    margin: 24px 0;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: #111;
+    border: 1px solid #222;
+    border-top: 3px solid #FFD700;
+    border-radius: 10px;
+    padding: 20px 28px;
+    text-align: center;
+    flex: 1;
+    min-width: 140px;
+}
+
+.card-num {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: #FFD700;
+    line-height: 1;
+}
+
+.card-label {
+    color: #666;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 6px;
+}
+
+/* TABELA */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #1f1f1f;
+    margin-top: 16px;
+}
+
+th, td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #1a1a1a;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    background: #0f0f0f;
+    color: #FFD700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+td {
+    color: #ccc;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+tr:hover td {
+    background: #161616;
+}
+
+/* BOTÃO */
+.btn {
+    display: inline-block;
+    padding: 9px 20px;
+    background: #FFD700;
+    color: #000;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.1s;
+    margin-bottom: 16px;
+}
+
+.btn:hover {
+    background: #ffe44d;
+    transform: translateY(-1px);
+}
+
+/* FORMULÁRIO */
 .form-grupo {
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 label {
     display: block;
-    margin-bottom: 5px;
-    color: var(--soldier-gold);
-    font-weight: bold;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
     text-transform: uppercase;
+    color: #FFD700;
+    margin-bottom: 6px;
 }
 
-input {
+input[type="text"],
+select {
     width: 100%;
-    padding: 10px;
-    background-color: #252a24;
-    border: 1px solid var(--militar-green);
-    color: white;
-    box-sizing: border-box;
-    font-family: inherit;
+    max-width: 480px;
+    padding: 10px 14px;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 6px;
+    color: #e5e5e5;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.2s;
 }
 
-input:focus {
+input[type="text"]:focus,
+select:focus {
     outline: none;
-    border-color: var(--soldier-gold);
-    box-shadow: 0 0 5px var(--soldier-gold);
+    border-color: #FFD700;
 }
 
-.erro {
-    background-color: #721c24;
-    color: #f8d7da;
-    padding: 10px;
-    border: 1px solid #f5c6cb;
-    text-align: center;
-    font-weight: bold;
+select option {
+    background: #111;
+    color: #e5e5e5;
 }
 
-/* Botões e Links */
 button[type="submit"] {
-    width: 100%;
-    background-color: var(--militar-green);
-    color: var(--soldier-gold);
-    border: 2px solid var(--soldier-gold);
-    padding: 12px;
-    font-size: 16px;
-    font-weight: bold;
-    text-transform: uppercase;
+    padding: 10px 24px;
+    background: #FFD700;
+    color: #000;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
-    transition: 0.3s;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s, transform 0.1s;
+    margin-top: 8px;
 }
 
 button[type="submit"]:hover {
-    background-color: var(--soldier-gold);
-    color: var(--dark-bg);
+    background: #ffe44d;
+    transform: translateY(-1px);
 }
 
-.btn {
-    background-color: var(--militar-green);
-    color: var(--soldier-gold);
-    border: 2px solid var(--soldier-gold);
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    text-transform: uppercase;
-    display: inline-block;
-    transition: 0.3s;
+a {
+    color: #FFD700;
 }
 
-.btn:hover {
-    background-color: var(--soldier-gold);
-    color: var(--dark-bg);
-}
-
-.back-link {
-    display: block;
-    text-align: center;
-    margin-top: 20px;
-    color: #aaa;
-    text-decoration: none;
-}
-
-.back-link:hover {
-    color: var(--soldier-gold);
-}
-
-/* Tabelas de Dados */
-.total-recrutas {
-    margin-top: 20px;
-    color: var(--soldier-gold);
-    font-weight: bold;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-    border: 1px solid var(--militar-green);
-}
-
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid var(--militar-green);
-}
-
-th {
-    background-color: var(--militar-green);
-    color: var(--soldier-gold);
-    text-transform: uppercase;
-}
-
-tr:hover {
-    background-color: #222821;
-}
-
-.destaque-nome {
-    color: var(--soldier-gold);
-    font-weight: bold;
-}
-
-/* Ações da Tabela */
-.acoes {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.acoes a {
-    color: #4a90e2;
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.acoes a:hover {
-    text-decoration: underline;
-}
-
-.btn-danger {
-    background-color: transparent;
-    color: var(--danger-red);
-    border: 1px solid var(--danger-red);
-    padding: 5px 10px;
-    cursor: pointer;
-    font-family: inherit;
-    text-transform: uppercase;
-    transition: 0.2s;
-}
-
-.btn-danger:hover {
-    background-color: var(--danger-red);
-    color: white;
+a:hover {
+    color: #fff;
 }
 
 .vazio {
-    text-align: center;
-    padding: 30px;
-    color: #666;
-    border: 1px dashed var(--militar-green);
-}
-
-.banner-soldier {
-    max-width: 320px; /* Aumentado de 180px para 320px */
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    border: 3px solid var(--soldier-gold); /* Borda um pouco mais grossa */
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.6); /* Brilho dourado intensificado */
-    transition: transform 0.3s ease;
-}
-
-.banner-soldier:hover {
-    transform: scale(1.03); /* Leve efeito de zoom ao passar o mouse */
+    color: #444;
+    font-style: italic;
 }

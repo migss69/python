@@ -1,121 +1,37 @@
-"""
-AulaSQLalchemy — Flask + SQLAlchemy (simples, sem MVC)
-CRUD de alunos em um único arquivo.
-"""
-
 import os
 
-from flask import Flask, redirect, render_template, request, url_for
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
 
-app = Flask(__name__)
-
-pasta_aula = os.path.abspath(os.path.dirname(__file__))
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
-    pasta_aula, "alunos.db"
-)
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-
-db = SQLAlchemy(app)
+from controllers import dashboard_bp, figurinhas_bp
+from dados_iniciais import popular_dados
+from models import db
 
 
-# --- MODEL (tabela no banco) ---
-class Aluno(db.Model):
-    __tablename__ = "alunos"
-
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(120), nullable=False)
-    tel = db.Column(db.String(11), nullable=False)
-
-    def __repr__(self):
-        return f"<Aluno {self.id} {self.nome}>"
-
-
-with app.app_context():
-    db.create_all()
-
-
-# --- READ — listar ---
-@app.route("/")
-def index():
-    # Removido os parênteses extras de Aluno.nome para ordenar corretamente por ordem decrescente
-    alunos = Aluno.query.order_by(Aluno.nome.desc()).all()
-    return render_template("lista.html", alunos=alunos)
-
-
-# --- CREATE — cadastrar ---
-@app.route("/cadastrar", methods=["GET", "POST"])
-def cadastrar():
-    if request.method == "POST":
-        nome = request.form.get("nome", "").strip()
-        # CORREÇÃO AQUI: Removido o ",0" do final da linha que criava a tupla indesejada
-        email = request.form.get("email", "").strip()
-        tel = request.form.get("tel", "").strip()
-        
-        if not nome or not email:
-            return render_template(
-                "formulario.html",
-                titulo="Cadastrar aluno",
-                erro="Preencha nome e e-mail.",
-                nome=nome,
-                email=email,
-                tel=tel,
-            )
-        aluno = Aluno(nome=nome, email=email, tel=tel)
-        db.session.add(aluno)
-        db.session.commit()
-        return redirect(url_for("index"))
-    return render_template("formulario.html", titulo="Cadastrar aluno")
-
-
-# --- UPDATE — editar ---
-@app.route("/editar/<int:aluno_id>", methods=["GET", "POST"])
-def editar(aluno_id):
-    aluno = db.session.get(Aluno, aluno_id)
-    if not aluno:
-        return redirect(url_for("index"))
-
-    if request.method == "POST":
-        nome = request.form.get("nome", "").strip()
-        email = request.form.get("email", "").strip()
-        tel = request.form.get("tel", "").strip()
-        if not nome or not email:
-            return render_template(
-                "formulario.html",
-                titulo="Editar aluno",
-                erro="Preencha nome, e-mail e telefone.",
-                nome=nome,
-                email=email,
-                tel=tel,
-                aluno_id=aluno.id,
-            )
-        aluno.nome = nome
-        aluno.email = email
-        aluno.tel = tel
-        db.session.commit()
-        return redirect(url_for("index"))
-
-    return render_template(
-        "formulario.html",
-        titulo="Editar aluno",
-        nome=aluno.nome,
-        email=aluno.email,
-        # Removido os espaços extras que estavam entre 'aluno' e '.tel'
-        tel=aluno.tel,
-        aluno_id=aluno.id,
+def criar_app():
+    app = Flask(
+        __name__,
+        template_folder="views/templates",
+        static_folder="views/static",
     )
 
+    pasta = os.path.abspath(os.path.dirname(__file__))
+    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///" + os.path.join(
+        pasta, "figurinhas.db"
+    )
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# --- DELETE — excluir ---
-@app.route("/excluir/<int:aluno_id>", methods=["POST"])
-def excluir(aluno_id):
-    aluno = db.session.get(Aluno, aluno_id)
-    if aluno:
-        db.session.delete(aluno)
-        db.session.commit()
-    return redirect(url_for("index"))
+    db.init_app(app)
+    app.register_blueprint(dashboard_bp)
+    app.register_blueprint(figurinhas_bp)
 
+    with app.app_context():
+        db.create_all()
+        popular_dados()
+
+    return app
+
+
+app = criar_app()
 
 if __name__ == "__main__":
     app.run(debug=True)
