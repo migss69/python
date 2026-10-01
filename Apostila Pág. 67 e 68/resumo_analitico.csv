@@ -1,0 +1,22 @@
+﻿indicador,item,valor
+Faturamento por loja,Loja Centro,517295.34
+Ticket médio por loja,Loja Centro,4577.83
+Faturamento por loja,Loja Shopping,437628.7
+Ticket médio por loja,Loja Shopping,4756.83
+Faturamento por loja,Loja Sul,428091.69
+Ticket médio por loja,Loja Sul,5220.63
+Faturamento por loja,Loja Norte,398796.48
+Ticket médio por loja,Loja Norte,6135.33
+Faturamento por loja,Loja Nordeste,210562.27
+Ticket médio por loja,Loja Nordeste,4386.71
+Faturamento por região,Nordeste,210562.27
+Faturamento por região,Norte,398796.48
+Faturamento por região,Sudeste,954924.04
+Faturamento por região,Sul,428091.69
+Top 5 produtos (quantidade),Fone de Ouvido,273.0
+Top 5 produtos (quantidade),Tablet,253.0
+Top 5 produtos (quantidade),Mesa de Escritório,232.0
+Top 5 produtos (quantidade),Teclado,227.0
+Top 5 produtos (quantidade),Notebook,224.0
+Mês de maior faturamento,10/2024,226119.48
+Mês de menor faturamento,05/2024,115774.88
